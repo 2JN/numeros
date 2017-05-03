@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title= Numeros
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div.container
+      div.header.clearfix
+        nav
+          ul.nav.nav-pills.pull-right
+            li(role="presentation")
+              a(href="/") Dashboard
+            li(role="presentation")
+              a(href="/users/login") Login
+            li(role="presentation")
+              a(href="/users/register") Register
+              li(role="presentation")
+                a(href="/users/logout") Logout
+          
+        h3.text-muted Numeros
+      
+      div.row
+        div.col-lg-12
+          block content
+    
+      footer.footer
+        p &copy; 2015 LoginApp, Inc.
