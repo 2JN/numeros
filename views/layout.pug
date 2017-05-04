@@ -22,6 +22,14 @@ html
       
       div.row
         div.col-lg-12
+          
+          if success_msg
+            div.alert.alert-success #{success_msg}
+          if error_msg
+            div.alert.alert-danger #{error_msg}
+          if error
+            div.alert.alert-danger #{error}
+          
           block content
     
       footer.footer

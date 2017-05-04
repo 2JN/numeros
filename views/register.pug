@@ -22,3 +22,9 @@ block content
         name="password2" 
       )
     button.btn.btn-default(type="submit") submit
+
+  if errors
+    hr
+    for error in errors
+      div.alert.alert-danger
+        != error.msg
