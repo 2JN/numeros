@@ -9,23 +9,25 @@ html
       div.header.clearfix
         nav
           ul.nav.nav-pills.pull-right
-            li(role="presentation")
-              a(href="/") Dashboard
-            li(role="presentation")
-              a(href="/users/login") Login
-            li(role="presentation")
-              a(href="/users/register") Register
+            if user
+              li(role="presentation")
+                a(href="/") Dashboard
               li(role="presentation")
                 a(href="/users/logout") Logout
+            else
+              li(role="presentation")
+                a(href="/users/login") Login
+              li(role="presentation")
+                a(href="/users/register") Register
           
         h3.text-muted Numeros
       
       div.row
         div.col-lg-12
           
-          if success_msg
+          unless success_msg == ''
             div.alert.alert-success #{success_msg}
-          if error_msg
+          unless error_msg == ''
             div.alert.alert-danger #{error_msg}
           if error
             div.alert.alert-danger #{error}

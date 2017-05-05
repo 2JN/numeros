@@ -8,13 +8,10 @@ var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
-var strategy = require('passport-local').Strategy;
-var mongo = require('mongodb');
 var mongoose = require('mongoose');
 
 // data base
 mongoose.connect('mongodb://localhost/loginapp');
-var db = mongoose.connection;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -63,6 +60,13 @@ app.use(expressValidator({
 // Connect Flash
 app.use(flash());
 
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.user = req.user || null;
+  next();
+})
+
 app.use('/', index);
 app.use('/users', users);
 
@@ -75,8 +79,6 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
