@@ -5,7 +5,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 exports.user_login_get = function(req, res, next) {
-  res.render('login');
+  res.render('login', {message: req.flash('error')});
 }
 
 passport.use(new LocalStrategy(

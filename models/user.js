@@ -7,6 +7,7 @@ var UserSchema = mongoose.Schema({
   },
   username: {
     type: String,
+    unique: true,
     required: true,
     index: true
   },
