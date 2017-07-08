@@ -4,6 +4,19 @@ var async = require('async');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
+exports.user_details_get = function(req, res, next) {
+  User.findOne({
+    username: req.params.user
+  }, {
+    username: 1,
+    _id: 0
+  }, function(err, user) {
+    if (err) { return next(err) }
+
+    res.end(JSON.stringify(user));
+  });
+}
+
 exports.user_login_get = function(req, res, next) {
   res.render('login', {message: req.flash('error')});
 }

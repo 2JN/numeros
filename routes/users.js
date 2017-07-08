@@ -15,4 +15,6 @@ router.get('/register', user_controller.user_register_get);
 
 router.post('/register', user_controller.user_register_post);
 
+router.get('/:user', user_controller.user_details_get);
+
 module.exports = router;

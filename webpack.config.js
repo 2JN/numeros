@@ -2,10 +2,10 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  entry: path.join(__dirname, 'components', 'main.js'),
+  entry: path.join(__dirname, 'components', 'register.jsx'),
   output: {
     path: path.join(__dirname, 'public', 'javascripts'),
-    filename: 'bundle.js'
+    filename: 'register.js'
   },
   module: {
     loaders: [
